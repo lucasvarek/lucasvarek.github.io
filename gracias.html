@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Varek — Ya casi estás</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --bg:        #0e0e0e;
+    --bg-subtle: #141414;
+    --text:      #e8e4dc;
+    --muted:     #7a7570;
+    --accent:    #c8b89a;
+    --border:    rgba(200, 184, 154, 0.15);
+    --serif:     'EB Garamond', Georgia, serif;
+    --sans:      'Inter', system-ui, sans-serif;
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2.5rem;
+    background: linear-gradient(to bottom, rgba(14,14,14,0.95) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.85;
+  }
+
+  .nav-logo:hover { opacity: 1; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* Main layout */
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+  }
+
+  /* Subtle top ornament */
+  .ornament {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--accent));
+    margin: 0 auto 3rem;
+    opacity: 0.5;
+  }
+
+  /* Icon envelope */
+  .icon-wrap {
+    width: 52px;
+    height: 52px;
+    border: 0.5px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    opacity: 0.7;
+  }
+
+  .icon-wrap svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Label */
+  .label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Heading */
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+    max-width: 580px;
+  }
+
+  /* Divider */
+  .divider {
+    width: 40px;
+    height: 0.5px;
+    background: var(--border);
+    margin: 0 auto 1.75rem;
+  }
+
+  /* Body text */
+  .body-text {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.85;
+  }
+
+  .body-text strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    max-width: 380px;
+    margin: 0 auto 3.5rem;
+    text-align: left;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.85rem 1.1rem;
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    background: var(--bg-subtle);
+  }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.8;
+    flex-shrink: 0;
+    margin-top: 1px;
+    min-width: 16px;
+  }
+
+  .step-text {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .step-text strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* Back link */
+  .back-link {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 0.5px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    padding-bottom: 2px;
+  }
+
+  .back-link:hover {
+    color: var(--text);
+    border-bottom-color: var(--border);
+  }
+
+  /* Quote block */
+  .quote {
+    max-width: 400px;
+    margin: 0 auto 3.5rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .quote p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .quote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    opacity: 0.45;
+    letter-spacing: 0.05em;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-1 { animation: fadeUp 0.7s ease both; }
+  .fade-2 { animation: fadeUp 0.7s 0.15s ease both; }
+  .fade-3 { animation: fadeUp 0.7s 0.3s ease both; }
+  .fade-4 { animation: fadeUp 0.7s 0.45s ease both; }
+  .fade-5 { animation: fadeUp 0.7s 0.6s ease both; }
+
+  @media (max-width: 600px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { display: none; }
+    main { padding: 7rem 1.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://lucasvarek.com" class="nav-logo">Lucas Varek</a>
+  <ul class="nav-links">
+    <li><a href="https://lucasvarek.com/#libro">El libro</a></li>
+    <li><a href="https://lucasvarek.com/#autor">El autor</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <div class="ornament fade-1"></div>
+
+  <div class="icon-wrap fade-1">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="1"/>
+      <path d="M2 4l10 9 10-9"/>
+    </svg>
+  </div>
+
+  <p class="label fade-1">Confirmación pendiente</p>
+
+  <h1 class="fade-2">Revisa tu bandeja de entrada.</h1>
+
+  <div class="divider fade-2"></div>
+
+  <p class="body-text fade-3">
+    Te hemos enviado un email de confirmación.<br>
+    <strong>Ábrelo y haz clic en el enlace</strong> para completar el proceso.<br>
+    En cuanto confirmes, el relato llega solo.
+  </p>
+
+  <div class="steps fade-4">
+    <div class="step">
+      <span class="step-num">1</span>
+      <span class="step-text">Abre el email que acabas de recibir. El asunto es <strong>«Confirma tu suscripción»</strong>.</span>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span class="step-text">Haz clic en el botón de confirmación. Es el único paso que falta.</span>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span class="step-text">Recibirás el relato <em>Antes del Umbral</em> en los próximos minutos.</span>
+    </div>
+  </div>
+
+  <div class="quote fade-4">
+    <p>«Hay una hora, cada noche, en que uno deja de estar despierto sin haber empezado a dormir. En esa hora, a veces, ocurren cosas.»</p>
+    <cite>— Lucas Varek</cite>
+  </div>
+
+  <a href="https://lucasvarek.com" class="back-link fade-5">Volver a lucasvarek.com</a>
+
+</main>
+
+<footer>
+  © Lucas Varek · La Frontera de la Conciencia
+</footer>
+
+</body>
+</html>
