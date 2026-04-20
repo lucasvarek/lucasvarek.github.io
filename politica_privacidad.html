@@ -832,12 +832,42 @@
     </div>
   </nav>
     <main>
-        <section>
+        <section id="hero">
             <h2>Los datos que facilitas se utilizan exclusivamente para enviarte contenido relacionado con El Umbral y comunicaciones de Lucas Varek. No se ceden a terceros. Puedes darte de baja en cualquier momento usando el enlace incluido en cada correo.</h2>
         </section>
     </main>
     <footer>
         <p>&copy; 2026 lucasvarek. Todos los derechos reservados.</p>
     </footer>
+   <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hero bg parallax subtle
+    const heroBg = document.getElementById('heroBg');
+    setTimeout(() => heroBg.classList.add('loaded'), 100);
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `scale(1.05) translateY(${y * 0.3}px)`;
+    });
+
+    // Intersection observer for fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Newsletter gestionado por Mailchimp vía form action
+  </script>
+
 </body>
 </html>
